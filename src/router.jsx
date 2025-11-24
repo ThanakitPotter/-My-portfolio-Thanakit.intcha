@@ -1,14 +1,14 @@
-// src/router.jsx
+
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import RootLayout from "./layouts/RootLayout.jsx";
 
-// 👉 Lazy Import (โหลดเฉพาะตอนเข้าแต่ละหน้า)
-const Home = lazy(() => import("./pages/Home.jsx"));
-const About = lazy(() => import("./pages/About.jsx"));
-const Projects = lazy(() => import("./pages/Projects.jsx"));
-const Strength = lazy(() => import("./pages/Strength.jsx"));
-const Contact = lazy(() => import("./pages/Contact.jsx"));
+
+const Home = lazy(() => import("./pages/Home.jsx"));       // แก้ Home -> home
+const About = lazy(() => import("./pages/about.jsx"));     // แก้ About -> about
+const Projects = lazy(() => import("./pages/projects.jsx")); // แก้ Projects -> projects
+const Strength = lazy(() => import("./pages/Strength.jsx")); // แก้ Strength -> strength
+const Contact = lazy(() => import("./pages/contact.jsx"));   // แก้ Contact -> contact
 
 export const router = createBrowserRouter([
   {
