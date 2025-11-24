@@ -1,24 +1,24 @@
-
+// src/router.jsx
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import RootLayout from "./layouts/RootLayout.jsx";
 
-
-const Home = lazy(() => import("./pages/Home.jsx"));       
-const About = lazy(() => import("./pages/about.jsx"));     
-const Projects = lazy(() => import("./pages/projects.jsx")); 
-const Strength = lazy(() => import("./pages/Strength.jsx")); 
-const Contact = lazy(() => import("./pages/contact.jsx"));   
+// ⚠️ แก้ Import ตรงนี้ให้ตรงกับชื่อไฟล์จริง 100%
+const Home = lazy(() => import("./pages/home.jsx"));       // ไฟล์จริงชื่อ home.jsx (ตัวเล็ก)
+const About = lazy(() => import("./pages/About.jsx"));     // ไฟล์จริงชื่อ About.jsx (ตัวใหญ่)
+const Projects = lazy(() => import("./pages/Projects.jsx")); // ไฟล์จริงชื่อ Projects.jsx (ตัวใหญ่)
+const Strength = lazy(() => import("./pages/Strength.jsx")); // ไฟล์จริงชื่อ Strength.jsx (ตัวใหญ่)
+const Contact = lazy(() => import("./pages/Contact.jsx"));   // ไฟล์จริงชื่อ Contact.jsx (ตัวใหญ่)
 
 export const router = createBrowserRouter([
   {
-    element: <RootLayout />, // Layout หลัก
+    element: <RootLayout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/About", element: <About /> },
-      { path: "/Projects", element: <Projects /> },
-      { path: "/Strength", element: <Strength /> },
-      { path: "/Contact", element: <Contact /> },
+      { path: "/about", element: <About /> },       // URL ควรเป็นตัวเล็กเสมอ
+      { path: "/projects", element: <Projects /> }, // URL ควรเป็นตัวเล็กเสมอ
+      { path: "/strength", element: <Strength /> }, // URL ควรเป็นตัวเล็กเสมอ
+      { path: "/contact", element: <Contact /> },   // URL ควรเป็นตัวเล็กเสมอ
     ],
   },
 ]);
