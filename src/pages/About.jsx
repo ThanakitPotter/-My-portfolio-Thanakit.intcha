@@ -3,7 +3,7 @@ import aboutImg from "../assets/about.jpg";
 import Education from "../components/Education";
 
 // ✅ 1. เพิ่มบรรทัดนี้: Import ไฟล์ PDF เข้ามา
-import resumePDF from "../assets/Resume_Thanakit_inthrapacha.pdf";
+import resumePDF from "../assets/Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf";
 
 export default function About() {
   return (
@@ -69,7 +69,7 @@ export default function About() {
               {/* ✅ 2. แก้ไขจุดนี้: เรียกใช้ตัวแปร resumePDF */}
               <a
                 href={resumePDF} 
-                download="Resume_Thanakit_Inthrapacha.pdf" // ตั้งชื่อไฟล์ตอนโหลดลงเครื่อง
+                download="Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf" // ตั้งชื่อไฟล์ตอนโหลดลงเครื่อง
                 className="px-6 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 transition"
               >
                 Download Resume
