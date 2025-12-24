@@ -1,4 +1,6 @@
 // src/pages/Strength.jsx
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import profile from "../assets/Strength.jpg";
 
 // ================= ICONS =================
@@ -61,45 +63,53 @@ export default function Strength() {
     { name: "Canva", value: 90, level: "Advanced", Icon: SiCanva },
   ];
 
+  const ref = useRef(null);
+  // Parallax logic
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const yImg = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+
   return (
-    <main className="relative pt-28 pb-24 text-white font-poppins bg-[#0B1220]">
+    <main id="strength" className="relative pt-28 pb-24 text-slate-900 font-sans bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ========== WHAT I DO ========== */}
         <section className="grid gap-10 lg:grid-cols-[420px_1fr]">
           <div>
-            <div className="h-1 w-16 rounded bg-sky-500 mb-6" />
+            <div className="h-1 w-16 rounded bg-indigo-600 mb-6" />
             <h2 className="text-4xl font-extrabold">What I Do</h2>
-            <p className="mt-4 text-white/75 leading-relaxed">
+            <p className="mt-4 text-slate-600 leading-relaxed">
               ผสมผสานการออกแบบและเทคโนโลยี เพื่อสร้างเว็บไซต์ที่ทั้ง “ดูดี” และ “ทำงานได้จริง”
               ด้วย React, Tailwind CSS, และ JavaScript มุ่งเน้นประสบการณ์ผู้ใช้ (UI/UX)
               ที่สวย ลื่นไหล และตอบสนองได้ดีทุกอุปกรณ์
             </p>
 
-            <div className="relative mt-10 rounded-[28px] ring-1 ring-white/10 overflow-hidden w-full">
-              <div className="absolute inset-0 -z-10 bg-cyan-400/20 blur-3xl" />
+            <motion.div 
+              ref={ref}
+              style={{ y: yImg }}
+              className="relative mt-10 rounded-[28px] ring-1 ring-slate-900/5 overflow-hidden w-full shadow-lg"
+            >
+              {/* Removed blur bg */}
               <img
                 src={profile}
                 alt="Profile"
                 className="block w-full object-cover"
               />
-            </div>
+            </motion.div>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {services.map((s, i) => (
               <article
                 key={i}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-lg transition
-                           hover:border-sky-500/30 hover:shadow-sky-500/10 hover:shadow-2xl hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-md transition
+                           hover:border-indigo-200 hover:shadow-xl hover:-translate-y-1"
               >
-                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-sky-500/10 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
                 <div className="flex items-center justify-center">
-                  <div className="mb-5 h-16 w-16 shrink-0 rounded-full bg-white/[0.06] ring-1 ring-white/10 grid place-items-center">
+                  <div className="mb-5 h-16 w-16 shrink-0 rounded-full bg-slate-50 ring-1 ring-slate-200 grid place-items-center">
                     {s.icon}
                   </div>
                 </div>
                 <h3 className="text-2xl font-semibold text-center">{s.title}</h3>
-                <p className="mt-3 text-center text-white/70 leading-relaxed">
+                <p className="mt-3 text-center text-slate-600 leading-relaxed">
                   {s.desc}
                 </p>
               </article>
@@ -113,21 +123,21 @@ export default function Strength() {
             {skills.map((sk, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow
-                           hover:border-white/20 hover:bg-white/[0.06] transition"
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm
+                           hover:border-indigo-200 hover:shadow-md transition"
               >
                 <div className="flex items-center gap-4">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-white/10 ring-1 ring-white/15">
-                    <sk.Icon className="text-xl" />
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-slate-100 ring-1 ring-slate-200">
+                    <sk.Icon className="text-xl text-slate-700" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
                       <div className="text-base font-semibold">{sk.name}</div>
-                      <div className="text-xs font-semibold text-white/80">{sk.level}</div>
+                      <div className="text-xs font-semibold text-slate-500">{sk.level}</div>
                     </div>
-                    <div className="mt-3 h-1.5 w-full rounded bg-white/10">
+                    <div className="mt-3 h-1.5 w-full rounded bg-slate-200">
                       <div
-                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
+                        className="h-full rounded bg-gradient-to-r from-indigo-500 to-indigo-700"
                         style={{ width: `${sk.value}%` }}
                       />
                     </div>
@@ -139,10 +149,10 @@ export default function Strength() {
 
           <div className="lg:pl-10">
             <div className="flex items-center gap-4">
-              <div className="h-[3px] w-16 rounded bg-sky-500" />
+              <div className="h-[3px] w-16 rounded bg-indigo-600" />
               <h3 className="text-3xl font-extrabold">Technical Skills</h3>
             </div>
-            <p className="mt-4 text-white/75 leading-relaxed">
+            <p className="mt-4 text-slate-600 leading-relaxed">
               เน้นฝึกฝนทักษะด้านการเขียนโปรแกรมและออกแบบเว็บ
               ทั้งในส่วน Frontend, Backend และ Database
               เพื่อพัฒนาเว็บที่ทั้งดูดีและทำงานได้จริงในระดับ Production
@@ -156,21 +166,21 @@ export default function Strength() {
             {tools.map((tool, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow
-                           hover:border-white/20 hover:bg-white/[0.06] transition"
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm
+                           hover:border-indigo-200 hover:shadow-md transition"
               >
                 <div className="flex items-center gap-4">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-white/10 ring-1 ring-white/15">
-                    <tool.Icon className="text-xl" />
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-slate-100 ring-1 ring-slate-200">
+                    <tool.Icon className="text-xl text-slate-700" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
                       <div className="text-base font-semibold">{tool.name}</div>
-                      <div className="text-xs font-semibold text-white/80">{tool.level}</div>
+                      <div className="text-xs font-semibold text-slate-500">{tool.level}</div>
                     </div>
-                    <div className="mt-3 h-1.5 w-full rounded bg-white/10">
+                    <div className="mt-3 h-1.5 w-full rounded bg-slate-200">
                       <div
-                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
+                        className="h-full rounded bg-gradient-to-r from-indigo-500 to-indigo-700"
                         style={{ width: `${tool.value}%` }}
                       />
                     </div>
@@ -182,10 +192,10 @@ export default function Strength() {
 
           <div className="lg:pl-10">
             <div className="flex items-center gap-4">
-              <div className="h-[3px] w-16 rounded bg-sky-500" />
+              <div className="h-[3px] w-16 rounded bg-indigo-600" />
               <h3 className="text-3xl font-extrabold">Tools</h3>
             </div>
-            <p className="mt-4 text-white/75 leading-relaxed">
+            <p className="mt-4 text-slate-600 leading-relaxed">
               ใช้เครื่องมือที่ช่วยให้การพัฒนาเว็บมีประสิทธิภาพมากขึ้น เช่น VS Code,
               GitHub สำหรับ version control และ Figma/Canva สำหรับการออกแบบ UI
             </p>
@@ -195,49 +205,49 @@ export default function Strength() {
         {/* ========== CERTIFICATE ========== */}
         <section className="mt-20">
           <div className="flex items-center gap-4">
-            <div className="h-[3px] w-16 rounded bg-sky-500" />
+            <div className="h-[3px] w-16 rounded bg-indigo-600" />
             <h3 className="text-4xl font-extrabold">Certificate</h3>
           </div>
 
-          <p className="mt-4 max-w-3xl text-white/70">
+          <p className="mt-4 max-w-3xl text-slate-600">
             ตัวอย่างใบรับรองและคอร์สที่เกี่ยวข้องกับการพัฒนาเว็บและการออกแบบ
             (สามารถอัปเดตเพิ่มเติมในอนาคตได้)
           </p>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
+            <article className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
               <img
                 src={CourseraCert}
                 alt="Coursera Certificate"
-                className="w-full h-64 object-cover border-b border-white/10 transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-64 object-cover border-b border-slate-100 transition-transform duration-500 group-hover:scale-105"
               />
               <div className="p-6">
-                <h4 className="text-xl font-semibold text-sky-400">
+                <h4 className="text-xl font-semibold text-indigo-600">
                   Coursera Project Certificate
                 </h4>
-                <p className="mt-2 text-white/75 text-sm leading-relaxed">
+                <p className="mt-2 text-slate-600 text-sm leading-relaxed">
                   นี่คือใบรับรองจาก Coursera ที่ยืนยันว่า ได้เรียนจบโปรเจกต์จริงเกี่ยวกับการสร้าง Chatbot ด้วย Python และ ChatGPT API
                 </p>
-                <div className="mt-3 text-xs text-white/50">
+                <div className="mt-3 text-xs text-slate-400">
                   ออกโดย: University of Michigan — 2025
                 </div>
               </div>
             </article>
 
-            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
+            <article className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
               <img
                 src={McocCert}
                 alt="MCOC Certificate"
-                className="w-full h-64 object-cover border-b border-white/10 transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-64 object-cover border-b border-slate-100 transition-transform duration-500 group-hover:scale-105"
               />
               <div className="p-6">
-                <h4 className="text-xl font-semibold text-sky-400">
+                <h4 className="text-xl font-semibold text-indigo-600">
                   MOOC Certificate of Completion
                 </h4>
-                <p className="mt-2 text-white/75 text-sm leading-relaxed">
+                <p className="mt-2 text-slate-600 text-sm leading-relaxed">
                   เป็นใบรับรองยืนยันความรู้ด้านความปลอดภัยไซเบอร์พื้นฐาน (เหมาะกับสาย Dev, IT, และ Security)
                 </p>
-                <div className="mt-3 text-xs text-white/50">
+                <div className="mt-3 text-xs text-slate-400">
                   ออกโดย: MOC (Cybersecurity Learning Platform), NCSA Thailand — 2024
                 </div>
               </div>
@@ -246,9 +256,6 @@ export default function Strength() {
         </section>
       </div>
 
-      {/* Soft background glows */}
-      <div className="pointer-events-none absolute -left-32 top-28 h-[380px] w-[380px] rounded-full bg-sky-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 bottom-10 h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-3xl" />
     </main>
   );
 }
@@ -258,7 +265,7 @@ export default function Strength() {
 /* ------------------------- */
 function IconMonitor() {
   return (
-    <svg width="34" height="34" viewBox="0 0 24 24" className="text-sky-300">
+    <svg width="34" height="34" viewBox="0 0 24 24" className="text-indigo-500">
       <path d="M4 4h16v10H4z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
       <path d="M8 20h8M10 14v6M14 14v6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
@@ -267,7 +274,7 @@ function IconMonitor() {
 
 function IconPalette() {
   return (
-    <svg width="34" height="34" viewBox="0 0 24 24" className="text-sky-300">
+    <svg width="34" height="34" viewBox="0 0 24 24" className="text-indigo-500">
       <path
         d="M12 3a9 9 0 0 0 0 18h2a2 2 0 0 0 0-4h-1a3 3 0 0 1 0-6h4a2 2 0 0 0 0-4h-2"
         fill="none"
@@ -286,7 +293,7 @@ function IconPalette() {
 
 function IconLogo() {
   return (
-    <svg width="34" height="34" viewBox="0 0 24 24" className="text-sky-300">
+    <svg width="34" height="34" viewBox="0 0 24 24" className="text-indigo-500">
       <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
       <path d="M12 3v18" stroke="currentColor" strokeWidth="1.6" />
     </svg>
@@ -295,7 +302,7 @@ function IconLogo() {
 
 function IconCode() {
   return (
-    <svg width="34" height="34" viewBox="0 0 24 24" className="text-sky-300">
+    <svg width="34" height="34" viewBox="0 0 24 24" className="text-indigo-500">
       <path
         d="M9 18l-6-6 6-6M15 6l6 6-6 6"
         fill="none"
