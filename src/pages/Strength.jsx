@@ -14,6 +14,8 @@ import {
   SiCanva,
   SiMysql,
   SiMongodb,
+  SiReact,
+  SiTailwindcss,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -50,6 +52,8 @@ export default function Strength() {
   ];
 
   const skills = [
+    { name: "React", value: 60, level: "Intermediate", Icon: SiReact },
+    { name: "Tailwind CSS", value: 75, level: "Intermediate", Icon: SiTailwindcss },
     { name: "HTML/CSS", value: 45, level: "Basic", Icon: SiHtml5 },
     { name: "JavaScript", value: 30, level: "Basic", Icon: SiJavascript },
     { name: "Python", value: 70, level: "Intermediate", Icon: SiPython },
