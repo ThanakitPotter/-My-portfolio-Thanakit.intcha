@@ -148,7 +148,7 @@ export default function Projects() {
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((item, idx) => (
           <ScaleIn key={item.id} delay={idx * 0.05}>
-            <article className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 transition">
+            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
               {/* รูป */}
               <button
                 type="button"
@@ -159,7 +159,7 @@ export default function Projects() {
                  <LazyImage
                   src={item.img}
                   alt={item.title}
-                  className="w-full"            // ให้ตัวคอมโพเนนต์จัดความสูงเองจาก ratio
+                  className="w-full transition-transform duration-500 group-hover:scale-105" // เพิ่ม Zoom effect
                   ratio={16/9}                  // 👈 สำคัญ ทำให้ wrapper มีความสูง
                   imgProps={{ loading: "eager", decoding: "async" }}
                 />
@@ -201,17 +201,17 @@ export default function Projects() {
         <div className="grid gap-8 sm:grid-cols-2">
           {CERTS.map((c, idx) => (
             <ScaleIn key={c.id} delay={idx * 0.05}>
-              <article className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 transition">
+              <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
                 <button
                   type="button"
                   onClick={() => setLb({ open: true, src: c.img, alt: c.title })}
-                  className="block w-full text-left"
+                  className="block w-full text-left overflow-hidden"
                   aria-label={`Open certificate ${c.title}`}
                 >
                   <img
                     src={c.img}
                     alt={c.title}
-                    className="w-full h-64 object-cover border-b border-white/10"
+                    className="w-full h-64 object-cover border-b border-white/10 transition-transform duration-500 group-hover:scale-105"
                     loading="eager"
                     decoding="async"
                   />
