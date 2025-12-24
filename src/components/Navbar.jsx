@@ -73,75 +73,83 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Hamburger */}
-          <HamburgerButton
-            open={open}
-            onClick={() => setOpen((v) => !v)}
-            aria-controls="mobile-menu"
-          />
+          {/* Desktop Menu */}
+          <nav className="hidden lg:flex items-center gap-2">
+            {links.map((item) => (
+              <a
+                key={item.to}
+                href={item.to}
+                onClick={(e) => handleLinkClick(e, item.to)}
+                className="rounded-md px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-indigo-600"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Hamburger (Mobile) */}
+          <div className="lg:hidden">
+            <HamburgerButton
+              open={open}
+              onClick={() => setOpen((v) => !v)}
+              aria-controls="mobile-menu"
+            />
+          </div>
         </div>
       </header>
 
-      {/* Overlay */}
+      {/* Mobile Menu Backdrop */}
+      <div
+        className={`fixed inset-0 z-[80] bg-black/50 transition-opacity duration-300 lg:hidden ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Mobile Menu Panel */}
       <div
         id="mobile-menu"
-        className={[
-          "fixed inset-0 z-[80] transition duration-300",
-          open ? "visible bg-white/95 backdrop-blur-xl" : "invisible bg-transparent backdrop-blur-0",
-        ].join(" ")}
-        onClick={() => setOpen(false)}
+        className={`fixed top-0 right-0 bottom-0 z-[90] w-full max-w-xs bg-white shadow-xl transition-transform duration-300 ease-in-out lg:hidden ${open ? 'translate-x-0' : 'translate-x-full'}`}
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
       >
-        {/* gradients */}
-        <div className="pointer-events-none absolute inset-0">
-        </div>
+        <div className="p-6">
+          {/* Menu Header */}
+          <div className="flex items-center justify-between">
+            <Link to="/" onClick={() => setOpen(false)} className="inline-flex items-center gap-3">
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-10 h-10 rounded-lg shadow-md"
+              />
+              <span className="text-lg font-bold text-slate-900">Portfolio</span>
+            </Link>
+            <button
+              ref={closeBtnRef}
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="-m-2 p-2 text-slate-500 hover:bg-slate-100 rounded-full"
+            >
+              <CloseIcon className="h-6 w-6" />
+            </button>
+          </div>
 
-        {/* ปุ่มปิด */}
-        <button
-          ref={closeBtnRef}
-          onClick={() => setOpen(false)}
-          aria-label="Close menu"
-          className={["absolute right-6 top-5 z-[85] text-slate-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-600/60 transition",
-            open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"].join(" ")}
-        >
-          <CloseIcon className="h-8 w-8" />
-        </button>
-
-        {/* โลโก้ใน overlay */}
-        <div className={["absolute left-6 top-4 z-[85] inline-flex items-center gap-4 transition", open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"].join(" ")}>
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-14 h-14 rounded-2xl animate-float shadow-lg"
-          />
-          <span className="text-2xl font-bold text-slate-900">Portfolio</span>
-        </div>
-
-        {/* เมนู */}
-        <div
-          className="relative mx-auto grid h-full max-w-7xl grid-cols-1 lg:grid-cols-[560px_1fr]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <nav className={["flex flex-col justify-center px-10 sm:px-16 transition-transform duration-300", open ? "translate-x-0" : "-translate-x-4"].join(" ")}>
-            <ul className="space-y-6 sm:space-y-8">
+          {/* Menu Links */}
+          <nav className="mt-8">
+            <ul className="space-y-2">
               {links.map((item) => (
                 <li key={item.to}>
                   <a
                     href={item.to}
                     onClick={(e) => handleLinkClick(e, item.to)}
-                    className="group flex items-baseline gap-6 text-4xl sm:text-5xl font-extrabold leading-none text-slate-900 hover:text-indigo-600"
+                    className="block rounded-lg px-4 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-indigo-600"
                   >
-                    {/* เส้นขีดเล็กๆ ด้านหน้าที่จะขึ้นสีเมื่อเอาเมาส์ชี้ */}
-                    <span className="hidden sm:block h-0.5 w-14 rounded transition-colors bg-transparent group-hover:bg-indigo-600" />
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
-          <aside className="hidden lg:block" aria-hidden />
         </div>
       </div>
     </>
