@@ -23,20 +23,7 @@ export default function About() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ===== ABOUT ME SECTION ===== */}
         <section className="grid items-center gap-12 lg:grid-cols-2">
-          {/* LEFT: IMAGE */}
-          <motion.div 
-            ref={ref}
-            style={{ y: yImg }}
-            className="relative flex justify-center"
-          >
-            <img
-              src={aboutImg}
-              alt="About Me"
-              className="w-full max-w-[500px] rounded-[32px] object-cover shadow-2xl ring-1 ring-slate-900/5 border border-indigo-100"
-            />
-          </motion.div>
-          
-          {/* RIGHT: TEXT */}
+          {/* LEFT: TEXT */}
           <div className="flex flex-col justify-center">
             <h2 className="text-4xl sm:text-5xl font-extrabold mb-2">
               <span className="text-indigo-600">About</span> Me
@@ -88,6 +75,19 @@ export default function About() {
               
             </div>
           </div>
+
+          {/* RIGHT: IMAGE */}
+          <motion.div 
+            ref={ref}
+            style={{ y: yImg }}
+            className="relative flex justify-center"
+          >
+            <img
+              src={aboutImg}
+              alt="About Me"
+              className="w-full max-w-[500px] rounded-[32px] object-cover shadow-2xl ring-1 ring-slate-900/5 border border-indigo-100"
+            />
+          </motion.div>
         </section>
       </div>
 
