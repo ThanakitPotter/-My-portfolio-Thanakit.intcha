@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/about.jpg";
 import Education from "../components/Education";
@@ -6,6 +7,8 @@ import Education from "../components/Education";
 import resumePDF from "../assets/Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf";
 
 export default function About() {
+  const [showResume, setShowResume] = useState(false);
+
   return (
     <section
       id="about"
@@ -67,13 +70,12 @@ export default function About() {
               </Link>
               
               {/* ✅ 2. แก้ไขจุดนี้: เรียกใช้ตัวแปร resumePDF */}
-              <a
-                href={resumePDF} 
-                download="Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf" // ตั้งชื่อไฟล์ตอนโหลดลงเครื่อง
+              <button
+                onClick={() => setShowResume(true)}
                 className="px-6 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-semibold text-sm hover:bg-white/10 transition"
               >
-                Download Resume
-              </a>
+                View Resume
+              </button>
               
             </div>
           </div>
@@ -86,6 +88,36 @@ export default function About() {
       {/* Background Glow Effects */}
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-fuchsia-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-40 top-0 h-[500px] w-[500px] rounded-full bg-sky-500/10 blur-3xl" />
+
+      {/* PDF Popup Modal */}
+      {showResume && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8">
+          <div className="relative w-full max-w-5xl h-full max-h-[90vh] bg-[#1e293b] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/10">
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-slate-900/50">
+              <h3 className="text-lg font-semibold text-white">Resume Preview</h3>
+              <div className="flex items-center gap-4">
+                <a
+                  href={resumePDF}
+                  download="Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf"
+                  className="text-sm text-sky-400 hover:text-sky-300 font-medium transition"
+                >
+                  Download File
+                </a>
+                <button
+                  onClick={() => setShowResume(false)}
+                  className="text-white/70 hover:text-white transition p-1"
+                  aria-label="Close"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+              </div>
+            </div>
+            {/* Viewer */}
+            <iframe src={resumePDF} className="flex-1 w-full h-full bg-white/5" title="Resume PDF" />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
