@@ -25,8 +25,8 @@ export default function Home() {
           {/* RIGHT : TEXT */}
           <div className="flex flex-col justify-center">
             {/* badge */}
-            <span className="mt-5 text-[48px] inline-block rounded-full bg-[#b845ff]/20 px-4 py-1.5 text-sm font-semibold text-[#b845ff] ring-1 ring-[#b845ff]/30">
-              APPLYING FOR FULL-STACK WEB DEVELOPER INTERNSHIP
+            <span className="mt-5 inline-flex w-fit items-center rounded-full bg-gradient-to-r from-fuchsia-500/10 to-purple-500/10 px-4 py-1.5 text-sm font-medium text-fuchsia-300 ring-1 ring-inset ring-fuchsia-500/20 backdrop-blur-sm">
+              🚀 APPLYING FOR FULL-STACK WEB DEVELOPER INTERNSHIP
             </span>
 
             {/* headline */}
@@ -62,7 +62,7 @@ export default function Home() {
             </div>
 
             {/* Glass Info Card */}
-            <div className="relative mt-10 max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-md">
+            <div className="relative mt-10 max-w-2xl rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 shadow-2xl backdrop-blur-xl hover:border-white/20 transition-colors">
               <h3 className="text-lg font-semibold">Quick Focus </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/80">
                 มุ่งเน้นด้าน Front-End Web Development โดยใช้ HTML, CSS และ JavaScript
