@@ -1,3 +1,5 @@
+import { FaGraduationCap } from "react-icons/fa";
+
 export default function Education() {
   const items = [
     {
@@ -18,28 +20,27 @@ export default function Education() {
     <section className="relative w-full py-24 text-slate-900 font-sans">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ===== HEADER ===== */}
-        <div className="grid gap-10 lg:grid-cols-[420px_1fr]">
-          {/* LEFT SIDE */}
-          <div>
+        <div className="flex flex-col items-center text-center mb-16">
             <div className="h-1 w-16 rounded bg-indigo-600 mb-4" />
             <h2 className="text-4xl font-extrabold">Education</h2>
-            <p className="mt-4 max-w-md text-slate-600 leading-relaxed">
+            <p className="mt-4 max-w-2xl text-slate-600 leading-relaxed">
                 My educational background has shaped my passion for technology,
                 creativity, and problem-solving. These experiences built the
                 foundation for my career in software and web development.
             </p>
-          </div>
+        </div>
 
-          {/* ===== RIGHT: EDUCATION LIST ===== */}
-          <div className="space-y-8">
+        {/* ===== EDUCATION LIST ===== */}
+        <div className="grid gap-8 md:grid-cols-2">
             {items.map((it, idx) => (
               <div
                 key={idx}
                 className="group relative rounded-2xl border border-slate-200 bg-white p-8 md:p-10 shadow-lg hover:border-indigo-200 hover:shadow-xl transition duration-300"
               >
                 {/* YEAR */}
-                <div className="absolute top-6 right-8 text-5xl font-extrabold text-slate-100 select-none group-hover:text-slate-200 transition-colors">
-                  {it.year}
+                <div className="flex items-center gap-2 mb-2 text-lg font-bold text-indigo-600">
+                  <FaGraduationCap className="text-xl" />
+                  <span>{it.year}</span>
                 </div>
 
                 {/* CONTENT */}
@@ -50,7 +51,6 @@ export default function Education() {
                 </p>
               </div>
             ))}
-          </div>
         </div>
       </div>
 
