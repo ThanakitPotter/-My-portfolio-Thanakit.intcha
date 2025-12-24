@@ -90,7 +90,7 @@ export default function Strength() {
               <article
                 key={i}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-lg transition
-                           hover:border-white/20 hover:shadow-sky-500/10 hover:shadow-2xl"
+                           hover:border-sky-500/30 hover:shadow-sky-500/10 hover:shadow-2xl hover:-translate-y-1"
               >
                 <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-sky-500/10 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
                 <div className="flex items-center justify-center">
@@ -114,7 +114,7 @@ export default function Strength() {
               <div
                 key={i}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow
-                           hover:border-white/20 transition"
+                           hover:border-white/20 hover:bg-white/[0.06] transition"
               >
                 <div className="flex items-center gap-4">
                   <div className="grid h-10 w-10 place-items-center rounded-lg bg-white/10 ring-1 ring-white/15">
@@ -127,7 +127,7 @@ export default function Strength() {
                     </div>
                     <div className="mt-3 h-1.5 w-full rounded bg-white/10">
                       <div
-                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600"
+                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
                         style={{ width: `${sk.value}%` }}
                       />
                     </div>
@@ -157,7 +157,7 @@ export default function Strength() {
               <div
                 key={i}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow
-                           hover:border-white/20 transition"
+                           hover:border-white/20 hover:bg-white/[0.06] transition"
               >
                 <div className="flex items-center gap-4">
                   <div className="grid h-10 w-10 place-items-center rounded-lg bg-white/10 ring-1 ring-white/15">
@@ -170,7 +170,7 @@ export default function Strength() {
                     </div>
                     <div className="mt-3 h-1.5 w-full rounded bg-white/10">
                       <div
-                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600"
+                        className="h-full rounded bg-gradient-to-r from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
                         style={{ width: `${tool.value}%` }}
                       />
                     </div>
@@ -205,11 +205,11 @@ export default function Strength() {
           </p>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            <article className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 transition">
+            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
               <img
                 src={CourseraCert}
                 alt="Coursera Certificate"
-                className="w-full h-64 object-cover border-b border-white/10"
+                className="w-full h-64 object-cover border-b border-white/10 transition-transform duration-500 group-hover:scale-105"
               />
               <div className="p-6">
                 <h4 className="text-xl font-semibold text-sky-400">
@@ -224,11 +224,11 @@ export default function Strength() {
               </div>
             </article>
 
-            <article className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 transition">
+            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
               <img
                 src={McocCert}
                 alt="MCOC Certificate"
-                className="w-full h-64 object-cover border-b border-white/10"
+                className="w-full h-64 object-cover border-b border-white/10 transition-transform duration-500 group-hover:scale-105"
               />
               <div className="p-6">
                 <h4 className="text-xl font-semibold text-sky-400">
