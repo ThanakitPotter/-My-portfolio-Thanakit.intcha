@@ -98,14 +98,9 @@ const CERTS = [
   },
 ];
 
-export default function Projects() {
+export default function Projects({ showContact, setShowContact }) {
   const [active, setActive] = useState("All");
   const [lb, setLb] = useState({ open: false, src: "", alt: "" });
-
-  // เข้าหน้าแล้วเลื่อนไปบนสุด
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
 
   // ปิดไลท์บ็อกซ์ด้วย Esc
   useEffect(() => {
@@ -123,7 +118,7 @@ export default function Projects() {
   );
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+    <section id="projects" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20">
       {/* ===== Filter bar ===== */}
       <FadeUp className="mb-8">
         <div className="flex flex-wrap items-center gap-3">
@@ -134,8 +129,8 @@ export default function Projects() {
               className={`rounded-full border px-4 py-2 text-sm font-medium transition
                 ${
                   active === c
-                    ? "bg-sky-500 text-white border-sky-400 shadow-[0_0_20px] shadow-sky-500/30"
-                    : "border-white/10 text-slate-200 hover:bg-white/5"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-200"
+                    : "border-slate-300 text-slate-600 hover:bg-slate-100"
                 }`}
             >
               {c}
@@ -148,7 +143,7 @@ export default function Projects() {
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((item, idx) => (
           <ScaleIn key={item.id} delay={idx * 0.05}>
-            <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
+            <article className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
               {/* รูป */}
               <button
                 type="button"
@@ -167,20 +162,20 @@ export default function Projects() {
 
               {/* เนื้อหา */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-sky-400">{item.title}</h3>
-                <div className="text-xs text-white/60 mt-1">
+                <h3 className="text-xl font-semibold text-indigo-600">{item.title}</h3>
+                <div className="text-xs text-slate-500 mt-1">
                   {item.category} — {item.year}
                 </div>
 
-                <p className="mt-3 text-white/75 text-sm leading-relaxed">{item.desc}</p>
+                <p className="mt-3 text-slate-600 text-sm leading-relaxed">{item.desc}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {item.techs.map((t, i) => (
                     <span
                       key={i}
-                      className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80"
+                      className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700"
                     >
-                      <t.Icon className="text-sky-400 text-sm" />
+                      <t.Icon className="text-indigo-400 text-sm" />
                       {t.name}
                     </span>
                   ))}
@@ -189,19 +184,19 @@ export default function Projects() {
             </article>
           </ScaleIn>
         ))}
-      </div>
+        </div>
 
       {/* ===== Certificates ===== */}
       <div className="mt-20">
         <div className="flex items-center gap-4 mb-4">
-          <div className="h-[3px] w-16 rounded bg-sky-500" />
-          <h3 className="text-3xl font-extrabold text-white">Certificates</h3>
+          <div className="h-[3px] w-16 rounded bg-indigo-600" />
+          <h3 className="text-3xl font-extrabold text-slate-900">Certificates</h3>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2">
           {CERTS.map((c, idx) => (
             <ScaleIn key={c.id} delay={idx * 0.05}>
-              <article className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-lg hover:shadow-sky-500/20 hover:-translate-y-1 transition duration-300">
+              <article className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300">
                 <button
                   type="button"
                   onClick={() => setLb({ open: true, src: c.img, alt: c.title })}
@@ -217,17 +212,17 @@ export default function Projects() {
                   />
                 </button>
                 <div className="p-6">
-                  <h4 className="text-xl font-semibold text-sky-400">{c.title}</h4>
-                  <div className="text-xs text-white/60 mt-1">
+                  <h4 className="text-xl font-semibold text-indigo-600">{c.title}</h4>
+                  <div className="text-xs text-slate-500 mt-1">
                     ออกโดย: {c.issuer} — {c.year}
                   </div>
-                  <p className="mt-3 text-white/75 text-sm leading-relaxed">{c.desc}</p>
+                  <p className="mt-3 text-slate-600 text-sm leading-relaxed">{c.desc}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {c.badges.map((b) => (
                       <span
                         key={b}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80"
+                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700"
                       >
                         {b}
                       </span>
@@ -238,6 +233,30 @@ export default function Projects() {
             </ScaleIn>
           ))}
         </div>
+      </div>
+
+      {/* Toggle Contact Button */}
+      <div className="mt-16 flex justify-center">
+        <button
+          onClick={() => setShowContact(!showContact)}
+          className="group flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 text-white transition-all hover:bg-indigo-600 hover:shadow-xl hover:shadow-indigo-200 active:scale-95"
+        >
+          <span className="font-semibold text-lg">{showContact ? "Close Contact" : "Contact Me"}</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`transition-transform duration-300 ${showContact ? "rotate-180" : ""}`}
+          >
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
       </div>
 
       {/* ===== Built-in Lightbox (close on overlay click / Esc / X) ===== */}
