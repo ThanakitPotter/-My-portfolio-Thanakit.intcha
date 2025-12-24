@@ -71,7 +71,7 @@ export default function Home() {
             <div className="flex flex-col justify-center">
               {/* badge */}
               <span className="mt-5 inline-flex w-fit items-center rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-700 ring-1 ring-inset ring-indigo-600/20">
-                🚀 APPLYING FOR FULL-STACK WEB DEVELOPER INTERNSHIP
+                 APPLYING FOR FULL-STACK WEB DEVELOPER INTERNSHIP
               </span>
 
               {/* headline */}
