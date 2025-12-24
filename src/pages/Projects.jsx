@@ -236,7 +236,7 @@ export default function Projects({ showContact, setShowContact }) {
       </div>
 
       {/* Toggle Contact Button */}
-      <div className="mt-16 flex justify-center">
+      <div id="contact-button" className="mt-16 flex justify-center">
         <button
           onClick={() => setShowContact(!showContact)}
           className="group flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 text-white transition-all hover:bg-indigo-600 hover:shadow-xl hover:shadow-indigo-200 active:scale-95"
