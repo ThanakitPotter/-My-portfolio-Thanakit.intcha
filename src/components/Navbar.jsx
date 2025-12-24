@@ -58,7 +58,14 @@ export default function Navbar() {
       <header className="fixed inset-x-0 top-0 z-[70] border-b border-slate-200 bg-white/80 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           {/* โลโก้ + ชื่อเว็บ */}
-          <Link to="/" className="inline-flex items-center gap-4 group">
+          <Link
+            to="/"
+            onClick={() => {
+              setOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="inline-flex items-center gap-4 group"
+          >
             <img
               src={logo}
               alt="Logo"
@@ -116,7 +123,14 @@ export default function Navbar() {
         <div className="p-6">
           {/* Menu Header */}
           <div className="flex items-center justify-between">
-            <Link to="/" onClick={() => setOpen(false)} className="inline-flex items-center gap-3">
+            <Link
+              to="/"
+              onClick={() => {
+                setOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="inline-flex items-center gap-3"
+            >
               <img
                 src={logo}
                 alt="Logo"
