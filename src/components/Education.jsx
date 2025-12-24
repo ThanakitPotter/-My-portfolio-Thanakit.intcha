@@ -37,10 +37,10 @@ export default function Education() {
             {items.map((it, idx) => (
               <div
                 key={idx}
-                className="relative rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 shadow-md backdrop-blur-sm hover:bg-white/[0.08] transition duration-300"
+                className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-8 md:p-10 shadow-lg backdrop-blur-md hover:border-sky-500/30 hover:shadow-sky-500/10 transition duration-300"
               >
                 {/* YEAR */}
-                <div className="absolute top-6 right-8 text-5xl font-extrabold text-white/10 select-none">
+                <div className="absolute top-6 right-8 text-5xl font-extrabold text-white/5 select-none group-hover:text-white/10 transition-colors">
                   {it.year}
                 </div>
 
