@@ -47,16 +47,16 @@ export default function About() {
 
             {/* SKILLS GRID */}
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/80">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/90 hover:bg-white/[0.06] transition backdrop-blur-sm">
                 ✓ Passionate About Continuous Learning
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/80">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/90 hover:bg-white/[0.06] transition backdrop-blur-sm">
                 ✓ Gaining Real Experience from Every Project
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/80">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/90 hover:bg-white/[0.06] transition backdrop-blur-sm">
                 ✓ Skilled in Responsive Web Design (UI/UX)
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-white/80">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/90 hover:bg-white/[0.06] transition backdrop-blur-sm">
                 ✓ Familiar with React, Node.js & API Integration
               </div>
             </div>
