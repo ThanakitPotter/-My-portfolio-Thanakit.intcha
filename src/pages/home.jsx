@@ -63,7 +63,7 @@ export default function Home() {
 
             {/* Glass Info Card */}
             <div className="relative mt-10 max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-md">
-              <h3 className="text-lg font-semibold">Quick Focus E</h3>
+              <h3 className="text-lg font-semibold">Quick Focus </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/80">
                 มุ่งเน้นด้าน Front-End Web Development โดยใช้ HTML, CSS และ JavaScript
                 สนใจการสร้างเว็บไซต์ที่ใช้งานง่ายและตอบสนองได้ดี
