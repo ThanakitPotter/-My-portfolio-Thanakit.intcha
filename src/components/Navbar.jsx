@@ -36,6 +36,22 @@ export default function Navbar() {
     { label: "Contact", to: "#contact" },
   ];
 
+  const handleLinkClick = (e, to) => {
+    setOpen(false); // ปิดเมนูมือถือ
+
+    if (to === "#contact") {
+      const contactSection = document.getElementById("contact");
+      // ถ้าไม่มีส่วน Contact (ยังไม่ได้เปิด) ให้เลื่อนไปหาปุ่ม Contact Me แทน
+      if (!contactSection) {
+        const contactBtn = document.getElementById("contact-button");
+        if (contactBtn) {
+          e.preventDefault(); // ยกเลิกการกระโดดไป #contact (เพราะมันไม่มี)
+          contactBtn.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   return (
     <>
       {/* Navbar */}
@@ -114,7 +130,7 @@ export default function Navbar() {
                 <li key={item.to}>
                   <a
                     href={item.to}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleLinkClick(e, item.to)}
                     className="group flex items-baseline gap-6 text-4xl sm:text-5xl font-extrabold leading-none text-slate-900 hover:text-indigo-600"
                   >
                     {/* เส้นขีดเล็กๆ ด้านหน้าที่จะขึ้นสีเมื่อเอาเมาส์ชี้ */}
