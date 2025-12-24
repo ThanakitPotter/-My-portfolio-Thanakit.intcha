@@ -4,7 +4,8 @@ import aboutImg from "../assets/about.jpg";
 import Education from "../components/Education";
 
 // ✅ 1. เพิ่มบรรทัดนี้: Import ไฟล์ PDF เข้ามา
-import resumePDF from "../assets/Resume_ธนกฤค_อินทรประชา-Ver.TH.pdf";
+// เปลี่ยนชื่อไฟล์ตรงนี้ให้ตรงกับไฟล์ใหม่ที่คุณใส่เข้าไปใน src/assets
+import resumePDF from "../assets/Resume_2025.pdf";
 
 export default function About() {
   const [showResume, setShowResume] = useState(false);
