@@ -7,6 +7,7 @@ import Strength from "./Strength";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import BackToTop from "../components/BackToTop";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false);
@@ -144,6 +145,9 @@ export default function Home() {
 
       {/* ปุ่มกลับขึ้นบนสุด */}
       <BackToTop />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
