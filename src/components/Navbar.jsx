@@ -2,7 +2,7 @@
 import logo from "../assets/logo.png";
 import TypeWriter from "./TypeWriter.jsx";
 import { useEffect, useRef, useState } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -29,31 +29,31 @@ export default function Navbar() {
   }, [open]);
 
   const links = [
-    { label: "Home", to: "/" },
-    { label: "About", to: "/about" },
-    { label: "My Work", to: "/projects" },
-    { label: "Strength", to: "/Strength" },
-    { label: "Contact", to: "/contact" },
+    { label: "Home", to: "#home" },
+    { label: "About", to: "#about" },
+    { label: "Strength", to: "#strength" },
+    { label: "My Work", to: "#projects" },
+    { label: "Contact", to: "#contact" },
   ];
 
   return (
     <>
       {/* Navbar */}
-      <header className="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-gradient-to-b from-slate-950/90 to-slate-900/60 backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-[70] border-b border-slate-200 bg-white/80 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
           {/* โลโก้ + ชื่อเว็บ */}
           <Link to="/" className="inline-flex items-center gap-4 group">
             <img
               src={logo}
               alt="Logo"
-              className="w-12 h-12 rounded-full transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]"
+              className="w-14 h-14 rounded-2xl transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105 shadow-md"
             />
             <TypeWriter
               words={["<> Portfolio />"]}
               typingSpeed={50}
               deletingSpeed={100}
               pause={1100}
-              className="text-2xl font-bold tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+              className="text-2xl font-bold tracking-wide text-slate-900"
             />
           </Link>
 
@@ -71,7 +71,7 @@ export default function Navbar() {
         id="mobile-menu"
         className={[
           "fixed inset-0 z-[80] transition duration-300",
-          open ? "visible bg-slate-950/75 backdrop-blur-xl" : "invisible bg-transparent backdrop-blur-0",
+          open ? "visible bg-white/95 backdrop-blur-xl" : "invisible bg-transparent backdrop-blur-0",
         ].join(" ")}
         onClick={() => setOpen(false)}
         role="dialog"
@@ -80,8 +80,6 @@ export default function Navbar() {
       >
         {/* gradients */}
         <div className="pointer-events-none absolute inset-0">
-          <div className={["absolute right-[-10%] top-[-10%] h-[40rem] w-[40rem] rounded-full bg-sky-500/10 blur-3xl transition-opacity", open ? "opacity-100" : "opacity-0"].join(" ")} />
-          <div className={["absolute left-[-10%] bottom-[-10%] h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/10 blur-3xl transition-opacity", open ? "opacity-100" : "opacity-0"].join(" ")} />
         </div>
 
         {/* ปุ่มปิด */}
@@ -89,7 +87,7 @@ export default function Navbar() {
           ref={closeBtnRef}
           onClick={() => setOpen(false)}
           aria-label="Close menu"
-          className={["absolute right-6 top-5 z-[85] text-white/90 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-400/60 transition",
+          className={["absolute right-6 top-5 z-[85] text-slate-500 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-600/60 transition",
             open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"].join(" ")}
         >
           <CloseIcon className="h-8 w-8" />
@@ -100,9 +98,9 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Logo"
-            className="w-12 h-12 rounded-full animate-float drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]"
+            className="w-14 h-14 rounded-2xl animate-float shadow-lg"
           />
-          <span className="text-2xl font-bold text-white">Portfolio</span>
+          <span className="text-2xl font-bold text-slate-900">Portfolio</span>
         </div>
 
         {/* เมนู */}
@@ -114,20 +112,15 @@ export default function Navbar() {
             <ul className="space-y-6 sm:space-y-8">
               {links.map((item) => (
                 <li key={item.to}>
-                  <NavLink to={item.to} onClick={() => setOpen(false)}>
-                    {({ isActive }) => (
-                      <span
-                        className={[
-                          "flex items-baseline gap-6",
-                          "text-4xl sm:text-5xl font-extrabold leading-none",
-                          isActive ? "text-sky-400" : "text-white hover:text-sky-300",
-                        ].join(" ")}
-                      >
-                        <span className={["hidden sm:block h-0.5 w-14 rounded transition-colors", isActive ? "bg-sky-500" : "bg-transparent"].join(" ")} />
-                        {item.label}
-                      </span>
-                    )}
-                  </NavLink>
+                  <a
+                    href={item.to}
+                    onClick={() => setOpen(false)}
+                    className="group flex items-baseline gap-6 text-4xl sm:text-5xl font-extrabold leading-none text-slate-900 hover:text-indigo-600"
+                  >
+                    {/* เส้นขีดเล็กๆ ด้านหน้าที่จะขึ้นสีเมื่อเอาเมาส์ชี้ */}
+                    <span className="hidden sm:block h-0.5 w-14 rounded transition-colors bg-transparent group-hover:bg-indigo-600" />
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -147,23 +140,23 @@ function HamburgerButton({ open, onClick, ariaControls }) {
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       aria-controls={ariaControls}
-      className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 p-0 text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-sky-400/60"
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 p-0 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-600/60"
     >
       <div className="relative h-4 w-6">
         <span className={[
-          "absolute left-0 top-0 h-0.5 w-full rounded bg-white transition-all duration-300 ease-in-out",
+          "absolute left-0 top-0 h-0.5 w-full rounded bg-slate-800 transition-all duration-300 ease-in-out",
           open ? "translate-y-2 rotate-45" : "translate-y-0 rotate-0",
         ].join(" ")} />
         <span className={[
-          "absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rounded bg-white transition-all duration-300 ease-in-out",
+          "absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 rounded bg-slate-800 transition-all duration-300 ease-in-out",
           open ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100",
         ].join(" ")} />
         <span className={[
-          "absolute left-0 bottom-0 h-0.5 w-full rounded bg-white transition-all duration-300 ease-in-out",
+          "absolute left-0 bottom-0 h-0.5 w-full rounded bg-slate-800 transition-all duration-300 ease-in-out",
           open ? "-translate-y-2 -rotate-45" : "translate-y-0 rotate-0",
         ].join(" ")} />
       </div>
-      <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/5" />
+      <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/5" />
     </button>
   );
 }
