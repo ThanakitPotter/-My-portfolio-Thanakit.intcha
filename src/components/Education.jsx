@@ -1,5 +1,3 @@
-import { desc } from "framer-motion/m";
-
 export default function Education() {
   const items = [
     {
@@ -17,15 +15,15 @@ export default function Education() {
   ];
 
   return (
-    <section className="relative w-full py-24 text-white font-poppins">
+    <section className="relative w-full py-24 text-slate-900 font-sans">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ===== HEADER ===== */}
         <div className="grid gap-10 lg:grid-cols-[420px_1fr]">
           {/* LEFT SIDE */}
           <div>
-            <div className="h-1 w-16 rounded bg-sky-500 mb-4" />
+            <div className="h-1 w-16 rounded bg-indigo-600 mb-4" />
             <h2 className="text-4xl font-extrabold">Education</h2>
-            <p className="mt-4 max-w-md text-white/70 leading-relaxed">
+            <p className="mt-4 max-w-md text-slate-600 leading-relaxed">
                 My educational background has shaped my passion for technology,
                 creativity, and problem-solving. These experiences built the
                 foundation for my career in software and web development.
@@ -37,17 +35,17 @@ export default function Education() {
             {items.map((it, idx) => (
               <div
                 key={idx}
-                className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-8 md:p-10 shadow-lg backdrop-blur-md hover:border-sky-500/30 hover:shadow-sky-500/10 transition duration-300"
+                className="group relative rounded-2xl border border-slate-200 bg-white p-8 md:p-10 shadow-lg hover:border-indigo-200 hover:shadow-xl transition duration-300"
               >
                 {/* YEAR */}
-                <div className="absolute top-6 right-8 text-5xl font-extrabold text-white/5 select-none group-hover:text-white/10 transition-colors">
+                <div className="absolute top-6 right-8 text-5xl font-extrabold text-slate-100 select-none group-hover:text-slate-200 transition-colors">
                   {it.year}
                 </div>
 
                 {/* CONTENT */}
                 <h3 className="text-2xl font-semibold">{it.title}</h3>
-                <p className="mt-1 text-sky-400 font-medium">– {it.place}</p>
-                <p className="mt-3 text-white/80 leading-relaxed max-w-xl">
+                <p className="mt-1 text-indigo-600 font-medium">– {it.place}</p>
+                <p className="mt-3 text-slate-600 leading-relaxed max-w-xl">
                   {it.desc}
                 </p>
               </div>
@@ -56,8 +54,7 @@ export default function Education() {
         </div>
       </div>
 
-      {/* ===== BACKGROUND GLOW ===== */}
-      <div className="pointer-events-none absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-sky-500/10 blur-3xl" />
+      {/* Removed glow */}
     </section>
   );
 }
