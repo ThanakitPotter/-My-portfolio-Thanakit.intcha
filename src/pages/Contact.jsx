@@ -20,7 +20,7 @@ const GMAP_QUERY =
 
 function Card({ children }) {
   return (
-    <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl">
+    <div className="flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg">
       {children}
     </div>
   );
@@ -28,7 +28,7 @@ function Card({ children }) {
 
 function IconBox({ Icon }) {
   return (
-    <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/8 ring-1 ring-white/15 text-sky-400">
+    <div className="grid h-12 w-12 place-items-center rounded-xl bg-indigo-500/10 ring-1 ring-indigo-500/20 text-indigo-400">
       <Icon size={22} />
     </div>
   );
@@ -39,7 +39,7 @@ function CopyButton({ onClick, copied }) {
     <button
       type="button"
       onClick={onClick}
-      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80 hover:bg-white/10 transition"
+      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-300 hover:bg-slate-700 transition"
     >
       {copied ? <FiCheck /> : <FiCopy />} {copied ? "Copied" : "Copy"}
     </button>
@@ -49,13 +49,13 @@ function CopyButton({ onClick, copied }) {
 function Input({ label, error = "", className = "", ...rest }) {
   return (
     <label className={`block ${className}`}>
-      <div className="mb-1 text-sm text-white/80">{label}</div>
+      <div className="mb-1 text-sm text-slate-300">{label}</div>
       <input
         {...rest}
         onChange={(e) => rest.onChange?.(e.target.value)}
-        className={`w-full rounded-xl border bg-white/5 px-4 py-3 outline-none ring-1 transition placeholder:text-white/30
-        ${error ? "border-rose-400/60 ring-rose-400/40" : "border-transparent ring-white/5 hover:ring-white/20"}
-        focus:border-sky-400/60 focus:ring-sky-400/40`}
+        className={`w-full rounded-xl border bg-slate-900 px-4 py-3 outline-none ring-1 transition placeholder:text-slate-600 text-slate-200
+        ${error ? "border-rose-500 ring-rose-900" : "border-slate-700 ring-transparent hover:border-indigo-500"}
+        focus:border-indigo-500 focus:ring-indigo-900`}
       />
       {error ? <div className="mt-1 text-xs text-rose-300">{error}</div> : null}
     </label>
@@ -65,13 +65,13 @@ function Input({ label, error = "", className = "", ...rest }) {
 function Textarea({ label, className = "", ...rest }) {
   return (
     <label className={`block ${className}`}>
-      <div className="mb-1 text-sm text-white/80">{label}</div>
+      <div className="mb-1 text-sm text-slate-300">{label}</div>
       <textarea
         {...rest}
         onChange={(e) => rest.onChange?.(e.target.value)}
-        className={`w-full rounded-xl border bg-white/5 px-4 py-3 outline-none ring-1 transition placeholder:text-white/30
-        border-transparent ring-white/5 hover:ring-white/20
-        focus:border-sky-400/60 focus:ring-sky-400/40`}
+        className={`w-full rounded-xl border bg-slate-900 px-4 py-3 outline-none ring-1 transition placeholder:text-slate-600 text-slate-200
+        border-slate-700 ring-transparent hover:border-indigo-500
+        focus:border-indigo-500 focus:ring-indigo-900`}
       />
     </label>
   );
@@ -83,9 +83,9 @@ function Social({ href, Icon, label }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-white/90 hover:bg-white/10 transition"
+      className="flex items-center gap-2 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-slate-300 hover:bg-slate-800 transition"
     >
-      <Icon className="text-sky-400" />
+      <Icon className="text-indigo-400" />
       {label}
     </a>
   );
@@ -96,11 +96,6 @@ function Social({ href, Icon, label }) {
 ========================= */
 
 export default function Contact() {
-  // เลื่อนขึ้นบนสุดเมื่อเข้าหน้า
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
-
   // ====== state ฟอร์ม ======
   const [form, setForm] = useState({
     name: "",
@@ -183,17 +178,17 @@ export default function Contact() {
   };
 
   return (
-    <main id="contact" className="relative min-h-screen bg-[#0B1220] text-white pt-28 pb-20 font-poppins">
+    <main id="contact" className="relative min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-slate-50 pt-28 pb-20 font-sans">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ===== Title ===== */}
         <div className="flex items-center gap-4 mb-8">
-          <div className="h-[3px] w-16 rounded bg-sky-500" />
+          <div className="h-[3px] w-16 rounded bg-indigo-500" />
           <h2 className="text-4xl font-extrabold">Get In Touch</h2>
         </div>
 
         {/* ===== Map + Intro ===== */}
         <section className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
-          <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-xl">
+          <div className="rounded-2xl overflow-hidden ring-1 ring-slate-800 shadow-lg">
             <iframe
               title="map"
               className="w-full h-[360px]"
@@ -204,7 +199,7 @@ export default function Contact() {
           </div>
 
           <div>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-slate-400 leading-relaxed">
               ถ้ามีงาน/โปรเจกต์ที่อยากคุยกันเพิ่มเติม หรือสนใจให้ช่วยออกแบบ/พัฒนาเว็บไซต์
               ทักมาได้ทั้งเบอร์โทรและอีเมลครับ 
               <br className="hidden md:block" />
@@ -215,7 +210,7 @@ export default function Contact() {
                 href={GMAP_QUERY}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2 text-slate-900 font-semibold hover:bg-sky-400 transition"
+                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-white font-semibold hover:bg-indigo-500 transition"
               >
                 <FiExternalLink /> Open in Maps
               </a>
@@ -229,8 +224,8 @@ export default function Contact() {
           <Card>
             <IconBox Icon={FiPhone} />
             <div>
-              <div className="text-lg font-semibold">Phone</div>
-              <div className="mt-1 text-white/80">{PHONE}</div>
+              <div className="text-lg font-semibold text-slate-200">Phone</div>
+              <div className="mt-1 text-slate-400">{PHONE}</div>
               <CopyButton onClick={() => onCopy(PHONE, "phone")} copied={copiedKey === "phone"} />
             </div>
           </Card>
@@ -239,9 +234,9 @@ export default function Contact() {
           <Card>
             <IconBox Icon={FiMail} />
             <div>
-              <div className="text-lg font-semibold">Email</div>
-              <div className="mt-1 text-white/80">{EMAIL_PRIMARY}</div>
-              <div className="text-white/60">{EMAIL_SECONDARY}</div>
+              <div className="text-lg font-semibold text-slate-200">Email</div>
+              <div className="mt-1 text-slate-400">{EMAIL_PRIMARY}</div>
+              <div className="text-slate-500">{EMAIL_SECONDARY}</div>
               <CopyButton
                 onClick={() => onCopy(`${EMAIL_PRIMARY}, ${EMAIL_SECONDARY}`, "mail")}
                 copied={copiedKey === "mail"}
@@ -253,8 +248,8 @@ export default function Contact() {
           <Card>
             <IconBox Icon={FiMapPin} />
             <div>
-              <div className="text-lg font-semibold">Address</div>
-              <div className="mt-1 text-white/80 leading-relaxed">{ADDRESS_LINE}</div>
+              <div className="text-lg font-semibold text-slate-200">Address</div>
+              <div className="mt-1 text-slate-400 leading-relaxed">{ADDRESS_LINE}</div>
               <CopyButton onClick={() => onCopy(ADDRESS_LINE, "addr")} copied={copiedKey === "addr"} />
             </div>
           </Card>
@@ -265,7 +260,7 @@ export default function Contact() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl"
+            className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg"
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <Input
@@ -302,12 +297,12 @@ export default function Contact() {
               />
             </div>
 
-            <label className="mt-4 flex items-start gap-3 text-sm text-white/80">
+            <label className="mt-4 flex items-start gap-3 text-sm text-slate-400">
               <input
                 type="checkbox"
                 checked={form.agree}
                 onChange={(e) => setForm((s) => ({ ...s, agree: e.target.checked }))}
-                className="mt-1 h-4 w-4 rounded border-white/20 bg-transparent"
+                className="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-800"
               />
               I agree to be contacted back about this inquiry. (No spam)
             </label>
@@ -318,16 +313,16 @@ export default function Contact() {
                 disabled={!canSubmit}
                 className={`rounded-xl px-6 py-2 font-semibold transition ${
                   canSubmit
-                    ? "bg-sky-500 text-slate-900 hover:bg-sky-400"
-                    : "bg-white/10 text-white/60 cursor-not-allowed"
+                    ? "bg-indigo-600 text-white hover:bg-indigo-500"
+                    : "bg-slate-800 text-slate-500 cursor-not-allowed"
                 }`}
               >
                 {sending ? "Sending…" : "Send Message"}
               </button>
 
-              <span className="text-xs text-white/60">
+              <span className="text-xs text-slate-500">
                 หรือส่งตรงได้ที่{" "}
-                <a href={`mailto:${EMAIL_PRIMARY}`} className="text-sky-400 hover:underline">
+                <a href={`mailto:${EMAIL_PRIMARY}`} className="text-indigo-400 hover:underline">
                   {EMAIL_PRIMARY}
                 </a>
               </span>
@@ -335,8 +330,8 @@ export default function Contact() {
           </form>
 
           {/* Social / Extra */}
-          <aside className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl">
-            <div className="text-lg font-semibold">Find me on</div>
+          <aside className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg">
+            <div className="text-lg font-semibold text-slate-200">Find me on</div>
             <div className="mt-4 grid grid-cols-2 gap-3">
               <Social href="https://github.com/ThanakitPotter" Icon={SiGithub} label="GitHub" />
               <Social href="https://www.linkedin.com/in/thanakit-intarapracha-81081a386/" Icon={SiLinkedin} label="LinkedIn" />
@@ -346,10 +341,6 @@ export default function Contact() {
           </aside>
         </section>
       </div>
-
-      {/* background glows */}
-      <div className="pointer-events-none absolute -right-24 bottom-20 h-[460px] w-[460px] rounded-full bg-fuchsia-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -left-24 top-24 h-[420px] w-[420px] rounded-full bg-sky-500/10 blur-3xl" />
     </main>
   );
 }
