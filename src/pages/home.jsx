@@ -1,17 +1,28 @@
 // src/pages/Home.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import profile from "../assets/profile.jpg";
 import About from "./About";
 import Strength from "./Strength";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import BackToTop from "../components/BackToTop";
 
 export default function Home() {
   const [showContact, setShowContact] = useState(false);
   const { scrollY } = useScroll();
   // รูปจะเลื่อนลงช้ากว่าปกติ (0 -> 150px) ทำให้ดูเหมือนลอยอยู่ข้างหลัง
   const yHero = useTransform(scrollY, [0, 500], [0, 150]);
+
+  // เลื่อนลงไปหา Contact เมื่อเปิด
+  useEffect(() => {
+    if (showContact) {
+      setTimeout(() => {
+        const el = document.getElementById("contact");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [showContact]);
 
   return (
     <div className="bg-slate-50 font-sans">
@@ -120,9 +131,9 @@ export default function Home() {
         {showContact && (
           <motion.div
             key="contact-section"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: 0, y: -50 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -50 }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
             className="overflow-hidden"
           >
@@ -130,6 +141,9 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ปุ่มกลับขึ้นบนสุด */}
+      <BackToTop />
     </div>
   );
 }
