@@ -13,6 +13,7 @@ import {
   SiFigma,
   SiCanva,
   SiMysql,
+  SiMongodb,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -54,6 +55,7 @@ export default function Strength() {
     { name: "Python", value: 70, level: "Intermediate", Icon: SiPython },
     { name: "Java", value: 55, level: "Basic–Intermediate", Icon: SiOpenjdk },
     { name: "SQL", value: 45, level: "Basic", Icon: SiMysql },
+    { name: "MongoDB", value: 40, level: "Basic", Icon: SiMongodb },
   ];
 
   const tools = [
@@ -119,30 +121,14 @@ export default function Strength() {
 
         {/* ========== SKILLS ========== */}
         <section className="relative mt-20 grid gap-10 lg:grid-cols-[1fr_460px]">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="flex flex-wrap gap-6">
             {skills.map((sk, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm
-                           hover:border-indigo-200 hover:shadow-md transition"
+                className="group flex h-24 w-24 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-indigo-200 hover:shadow-md"
+                title={sk.name}
               >
-                <div className="flex items-center gap-4">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-slate-100 ring-1 ring-slate-200">
-                    <sk.Icon className="text-xl text-slate-700" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-base font-semibold">{sk.name}</div>
-                      <div className="text-xs font-semibold text-slate-500">{sk.level}</div>
-                    </div>
-                    <div className="mt-3 h-1.5 w-full rounded bg-slate-200">
-                      <div
-                        className="h-full rounded bg-gradient-to-r from-indigo-500 to-indigo-700"
-                        style={{ width: `${sk.value}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <sk.Icon className="text-5xl text-slate-700 transition-colors group-hover:text-indigo-600" />
               </div>
             ))}
           </div>
@@ -162,30 +148,14 @@ export default function Strength() {
 
         {/* ========== TOOLS ========== */}
         <section className="relative mt-20 grid gap-10 lg:grid-cols-[1fr_460px]">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="flex flex-wrap gap-6">
             {tools.map((tool, i) => (
               <div
                 key={i}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm
-                           hover:border-indigo-200 hover:shadow-md transition"
+                className="group flex h-24 w-24 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-indigo-200 hover:shadow-md"
+                title={tool.name}
               >
-                <div className="flex items-center gap-4">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-slate-100 ring-1 ring-slate-200">
-                    <tool.Icon className="text-xl text-slate-700" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="text-base font-semibold">{tool.name}</div>
-                      <div className="text-xs font-semibold text-slate-500">{tool.level}</div>
-                    </div>
-                    <div className="mt-3 h-1.5 w-full rounded bg-slate-200">
-                      <div
-                        className="h-full rounded bg-gradient-to-r from-indigo-500 to-indigo-700"
-                        style={{ width: `${tool.value}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <tool.Icon className="text-5xl text-slate-700 transition-colors group-hover:text-indigo-600" />
               </div>
             ))}
           </div>
