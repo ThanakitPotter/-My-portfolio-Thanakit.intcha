@@ -115,7 +115,15 @@ export default function About() {
               </div>
             </div>
             {/* Viewer */}
-            <iframe src={resumePDF} className="flex-1 w-full h-full bg-white/5" title="Resume PDF" />
+            <object
+              data={resumePDF}
+              type="application/pdf"
+              className="flex-1 w-full h-full bg-white/5"
+            >
+              <div className="flex h-full flex-col items-center justify-center text-white/70">
+                <p>ไม่สามารถแสดงตัวอย่างไฟล์ได้</p>
+              </div>
+            </object>
           </div>
         </div>
       )}
